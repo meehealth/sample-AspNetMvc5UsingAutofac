@@ -1,4 +1,5 @@
-﻿using Autofac;
+﻿using AspNetMvc5WithoutIdentity.Infrastructure;
+using Autofac;
 using Autofac.Integration.Mvc;
 using System;
 using System.Collections.Generic;
@@ -25,6 +26,7 @@ namespace AspNetMvc5WithoutIdentity
             // Register others
             // TODO:
 
+            builder.RegisterType<DateTimeService>().As<IDateTimeService>().SingleInstance();
             var container = builder.Build();
             DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
         }
